@@ -8,7 +8,10 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 from django.db import models
+from uploader.models import Image
 
+from .categoria import Categoria
+from .genero import Genero
 
 class UserManager(BaseUserManager):
     """Manager for users."""
@@ -44,7 +47,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    foto = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True, blank=True, default=None)
+    cpf = models.IntegerField(null=True, blank=True)
+    descricao = models.CharField(max_length=200, null=True, blank=True)
+    categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT, related_name="autores")
+    genero = models.ForeignKey(Genero, on_delete=models.PROTECT, related_name="generos")
 
+    
     objects = UserManager()
 
     USERNAME_FIELD = "email"
