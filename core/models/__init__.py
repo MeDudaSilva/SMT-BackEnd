@@ -1,3 +1,5 @@
 from .user import User
 from .categoria import Categoria
-from .genero import Genero
+from .trabalho import Trabalho
+
+# from .favorito import Favorito

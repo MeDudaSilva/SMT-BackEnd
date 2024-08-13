@@ -1,3 +1,3 @@
 from .user import UserSerializer
 from .categoria import CategoriaSerializer
-from .genero import GeneroSerializer
+from .trabalho import TrabalhoSerializer

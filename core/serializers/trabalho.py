@@ -1,9 +1,9 @@
 from rest_framework.serializers import ModelSerializer
 
-from core.models import Genero
+from core.models import Trabalho
 
 
-class GeneroSerializer(ModelSerializer):
+class TrabalhoSerializer(ModelSerializer):
     class Meta:
-        model = Genero
+        model = Trabalho
         fields = "__all__"
