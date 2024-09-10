@@ -50,7 +50,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         ADM = 3, "Admin"
 
     
-    tipo = models.IntegerField(choices=Tipo.choices)
+    tipo = models.IntegerField(choices=Tipo.choices, default=3)
     passage_id = models.CharField(max_length=255, unique=True)
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
