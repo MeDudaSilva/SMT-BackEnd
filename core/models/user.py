@@ -40,22 +40,20 @@ class UserManager(BaseUserManager):
         return user
 
 
-
-
 class User(AbstractBaseUser, PermissionsMixin):
     """User model in the system."""
+
     class Tipo(models.IntegerChoices):
         CLIENTE = 1, "Cliente"
         TRABALHADOR = 2, "Trabalhador"
         ADM = 3, "Admin"
 
-    
-    tipo = models.IntegerField(choices=Tipo.choices, default=3)
     passage_id = models.CharField(max_length=255, unique=True)
+    categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT, related_name="autores", null=True, blank=True)
+    cpf = models.IntegerField(null=True, blank=True)
+    descricao = models.CharField(max_length=200, null=True, blank=True)
     email = models.EmailField(max_length=255, unique=True)
-    name = models.CharField(max_length=255)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
+    favorito = models.ManyToManyField("core.User", related_name="favoritos", related_query_name="fas")
     foto = models.ForeignKey(
         Image,
         related_name="+",
@@ -64,10 +62,10 @@ class User(AbstractBaseUser, PermissionsMixin):
         blank=True,
         default=None,
     )
-    cpf = models.IntegerField(null=True, blank=True)
-    descricao = models.CharField(max_length=200, null=True, blank=True)
-    categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT, related_name="autores", null=True, blank=True)
-    favorito = models.ManyToManyField("core.User", related_name="favoritos", related_query_name="fas")
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    name = models.CharField(max_length=255)
+    tipo = models.IntegerField(choices=Tipo.choices, default=3)
 
     objects = UserManager()
 
@@ -78,4 +76,4 @@ class User(AbstractBaseUser, PermissionsMixin):
         """Meta options for the model."""
 
         verbose_name = "Usuário"
-        verbose_name_plural = "Usuários"        
+        verbose_name_plural = "Usuários"
