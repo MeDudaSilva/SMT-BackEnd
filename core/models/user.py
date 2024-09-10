@@ -40,9 +40,17 @@ class UserManager(BaseUserManager):
         return user
 
 
+
+
 class User(AbstractBaseUser, PermissionsMixin):
     """User model in the system."""
+    class Tipo(models.IntegerChoices):
+        CLIENTE = 1, "Cliente"
+        TRABALHADOR = 2, "Trabalhador"
+        ADM = 3, "Admin"
 
+    
+    tipo = models.IntegerField(choices=Tipo.choices)
     passage_id = models.CharField(max_length=255, unique=True)
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
@@ -70,4 +78,4 @@ class User(AbstractBaseUser, PermissionsMixin):
         """Meta options for the model."""
 
         verbose_name = "Usuário"
-        verbose_name_plural = "Usuários"
+        verbose_name_plural = "Usuários"        
