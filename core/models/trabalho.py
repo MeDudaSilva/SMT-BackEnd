@@ -26,6 +26,5 @@ class Trabalho(models.Model):
     )
     estado = models.IntegerField(choices=Estado.choices, default=1)
 
-
     def __str__(self):
         return f"({self.id}) | nome: {self.nome.name or ''} | Iniciou-se: {self.DataInicio} | Prazo : {self.prazo} | Terminou em: {self.DataTermino}"

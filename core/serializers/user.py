@@ -14,6 +14,7 @@ class TrabalhadorPequeno(ModelSerializer):
         model = User
         fields = ("foto", "nome", "nota", "categoria")
 
+
 class CategoriaTrabalhador(ModelSerializer):
     class Meta:
         model = User

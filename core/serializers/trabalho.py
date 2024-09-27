@@ -8,6 +8,7 @@ class TrabalhoSerializer(ModelSerializer):
         model = Trabalho
         fields = "__all__"
 
+
 class HistóricoTrabalho(ModelSerializer):
     class Meta:
         model = Trabalho
