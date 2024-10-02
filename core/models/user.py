@@ -13,6 +13,8 @@ from uploader.models import Image
 
 from .categoria import Categoria
 
+# from .avaliacao import Avaliacao
+
 
 class UserManager(BaseUserManager):
     """Manager for users."""
@@ -66,6 +68,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     name = models.CharField(max_length=255)
     tipo = models.IntegerField(choices=Tipo.choices, default=3)
+    # nota = models.ForeignKey(Avaliacao, on_delete=models.PROTECT, related_name="+", null=True, blank=True)
 
     objects = UserManager()
 

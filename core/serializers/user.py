@@ -1,21 +1,15 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, CharField
 
 from core.models import User
-
-
-class UserSerializer(ModelSerializer):
-    class Meta:
-        model = User
-        fields = "__all__"
 
 
 class TrabalhadorPequeno(ModelSerializer):
     class Meta:
         model = User
-        fields = ("foto", "nome", "nota", "categoria")
+        fields = ("foto", "name", "categoria")
 
-
-class CategoriaTrabalhador(ModelSerializer):
+class UserSerializer(ModelSerializer):
+    foto = CharField(source='foto.url', read_only=True)
     class Meta:
         model = User
-        fields = "categoria"
+        fields = "__all__"
