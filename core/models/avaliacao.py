@@ -10,3 +10,8 @@ class Avaliacao(models.Model):
 
     def __str__(self):
         return f"id:{self.id}, nome: {self.trabalho} | nota: {self.nota}"
+
+    def media(self):
+        if self.nota.count() == 0:
+            return 0
+        return sum(Avaliacao.nota for avaliacao in self.nota.all()) / self.notas.count()
