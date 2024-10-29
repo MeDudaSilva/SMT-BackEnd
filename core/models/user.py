@@ -13,8 +13,6 @@ from uploader.models import Image
 
 from .categoria import Categoria
 
-# from .avaliacao import Avaliacao
-
 
 class UserManager(BaseUserManager):
     """Manager for users."""
@@ -59,16 +57,19 @@ class User(AbstractBaseUser, PermissionsMixin):
     foto = models.ForeignKey(
         Image,
         related_name="+",
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         null=True,
         blank=True,
         default=None,
     )
+    capa = models.ForeignKey(Image, related_name="+", on_delete=models.PROTECT, null=True, blank=True, default=None)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     name = models.CharField(max_length=255)
     tipo = models.IntegerField(choices=Tipo.choices, default=3)
-    # notaUser = models.ManyToManyField(nota)
+    publicacao = models.CharField(max_length=300)
+    publicacaoFoto = models.ForeignKey(Image, related_name="+", on_delete=models.PROTECT, null=True, blank=True, default=None)
+
 
     objects = UserManager()
 

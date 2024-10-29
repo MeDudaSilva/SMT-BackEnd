@@ -11,7 +11,7 @@ from drf_spectacular.views import (
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from core.views import AvaliacaoViewSet, CategoriaViewSet, TrabalhoViewSet, UserViewSet
+from core.views import CategoriaViewSet, TrabalhoViewSet, HistoricoTrabalhoViewSet, UserViewSet, AvalicaoClienteViewSet, AvalicaoTrabalhadorViewSet, PerfilViewSet
 from uploader.router import router as uploader_router
 
 router = DefaultRouter()
@@ -19,7 +19,11 @@ router = DefaultRouter()
 router.register(r"usuarios", UserViewSet, basename="usuarios")
 router.register(r"categorias", CategoriaViewSet, basename="categorias")
 router.register(r"trabalhos", TrabalhoViewSet, basename="trabalhos")
-router.register(r"avaliações", AvaliacaoViewSet, basename="avaliações")
+router.register(r"trabalhoshistorico", HistoricoTrabalhoViewSet, basename="trabalhoshistorico")
+router.register(r"avaliacaocliente", AvalicaoClienteViewSet, basename="avaliacaocliente")
+router.register(r"avaliacaotrabalhador", AvalicaoTrabalhadorViewSet, basename="avaliacaotrabalhador")
+router.register(r"perfil", PerfilViewSet, basename="perfil")
+# router.register(r"avaliações", AvaliacaoViewSet, basename="avaliações")
 
 urlpatterns = [
     path("admin/", admin.site.urls),

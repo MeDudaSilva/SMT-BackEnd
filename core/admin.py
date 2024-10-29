@@ -54,5 +54,5 @@ class UserAdmin(BaseUserAdmin):
 admin.site.register(models.User, UserAdmin)
 admin.site.register(models.Categoria)
 admin.site.register(models.Trabalho)
-admin.site.register(models.Avaliacao)
+# admin.site.register(models.Avaliacao)
 # admin.site.register(models.Favorito)

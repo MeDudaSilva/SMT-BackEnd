@@ -1,4 +1,4 @@
-from .user import UserViewSet
+from .user import UserViewSet, PerfilViewSet
 from .categoria import CategoriaViewSet
-from .trabalho import TrabalhoViewSet
-from .avaliacao import AvaliacaoViewSet
+from .trabalho import TrabalhoViewSet, HistoricoTrabalhoViewSet, AvalicaoClienteViewSet, AvalicaoTrabalhadorViewSet
+# from .avaliacao import AvaliacaoViewSet

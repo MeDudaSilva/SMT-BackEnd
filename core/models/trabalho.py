@@ -25,6 +25,8 @@ class Trabalho(models.Model):
         null=True,
     )
     estado = models.IntegerField(choices=Estado.choices, default=1)
+    trabalhadorAvaliacao = models.DecimalField(max_digits=3, decimal_places=1)
+    clienteAvaliacao = models.DecimalField(max_digits=3, decimal_places=1)
 
     def __str__(self):
         return f"({self.id}) | nome: {self.nome.name or ''} | Iniciou-se: {self.DataInicio} | Prazo : {self.prazo} | Terminou em: {self.DataTermino}"

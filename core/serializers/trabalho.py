@@ -9,8 +9,18 @@ class TrabalhoSerializer(ModelSerializer):
         fields = "__all__"
 
 
-class HistóricoTrabalho(ModelSerializer):
+class HistoricoTrabalhoSerializer(ModelSerializer):
     class Meta:
         model = Trabalho
-        fields = ("nome", "DataDeTermino", "estado")
+        fields = ("nome", "DataTermino", "estado")
         depth = 1
+
+class TrabalhadorAvaliacaoSerializer(ModelSerializer):
+    class Meta:
+        model = Trabalho
+        fields = ("nome", "trabalhadorAvaliacao")
+
+class ClienteAvaliacaoSerializer(ModelSerializer):
+    class Meta:
+        model = Trabalho
+        fields = ("nome", "clienteAvaliacao")
