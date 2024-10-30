@@ -13,12 +13,13 @@ class HistoricoTrabalhoSerializer(ModelSerializer):
     class Meta:
         model = Trabalho
         fields = ("nome", "DataTermino", "estado")
-        depth = 1
+
 
 class TrabalhadorAvaliacaoSerializer(ModelSerializer):
     class Meta:
         model = Trabalho
         fields = ("nome", "trabalhadorAvaliacao")
+
 
 class ClienteAvaliacaoSerializer(ModelSerializer):
     class Meta:

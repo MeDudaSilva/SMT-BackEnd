@@ -16,14 +16,7 @@ class Trabalho(models.Model):
     prazo = models.DateField()
     DataTermino = models.DateField(blank=True, null=True)
     preco = models.DecimalField(max_digits=8, decimal_places=1)
-    nome = models.ForeignKey(
-        User,
-        on_delete=models.PROTECT,
-        related_name="cliente",
-        related_query_name="trabalhadores",
-        blank=True,
-        null=True,
-    )
+    nome = models.CharField(max_length=30)
     estado = models.IntegerField(choices=Estado.choices, default=1)
     trabalhadorAvaliacao = models.DecimalField(max_digits=3, decimal_places=1)
     clienteAvaliacao = models.DecimalField(max_digits=3, decimal_places=1)

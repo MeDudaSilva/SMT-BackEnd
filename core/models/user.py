@@ -53,7 +53,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     cpf = models.IntegerField(null=True, blank=True)
     descricao = models.CharField(max_length=200, null=True, blank=True)
     email = models.EmailField(max_length=255, unique=True)
-    favorito = models.ManyToManyField("core.User", related_name="favoritos", related_query_name="fas")
+    # favorito = models.ManyToManyField("core.User", related_name="favoritos", related_query_name="fas")
     foto = models.ForeignKey(
         Image,
         related_name="+",
@@ -68,8 +68,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=255)
     tipo = models.IntegerField(choices=Tipo.choices, default=3)
     publicacao = models.CharField(max_length=300)
-    publicacaoFoto = models.ForeignKey(Image, related_name="+", on_delete=models.PROTECT, null=True, blank=True, default=None)
-
+    publicacaoFoto = models.ForeignKey(
+        Image, related_name="+", on_delete=models.PROTECT, null=True, blank=True, default=None
+    )
 
     objects = UserManager()
 

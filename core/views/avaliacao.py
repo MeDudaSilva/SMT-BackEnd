@@ -7,4 +7,3 @@
 # class AvaliacaoViewSet(ModelViewSet):
 #     queryset = Avaliacao.objects.all()
 #     serializer_class = AvaliacaoSerializer
-    
